@@ -19,3 +19,7 @@
  "scripts": {
     "test": "mocha MakeApponitment.js"
   }
+
+
+## run file
+- for run file run this command: npm test
