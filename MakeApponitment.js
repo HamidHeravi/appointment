@@ -2,13 +2,13 @@ const { By, Builder, until } = require("selenium-webdriver");
 const { assert } = require('chai');
 require('chai').should();
 chrome = require('selenium-webdriver/chrome');
-globalThis.screen = {
+let screen = {
     width: 1920,
     height: 1080
   };
 
 
-describe("create radar page and validate it", function () {
+describe("make an appointment", function () {
     this.timeout(50000);
 
     after('Tear down', async function () {
