@@ -22,14 +22,14 @@ describe("make an appointment", function () {
         await driver.wait(until.elementLocated(By.xpath('//a[@id="plhMain_lnkSchApp"]')), 20000);
         await driver.findElement(By.xpath('//a[@id="plhMain_lnkSchApp"]')).click();
         await driver.wait(until.elementLocated(By.xpath('//table[@id="plhMain_tbl"]')), 20000);
-        // select Legalisation of a signature
+        // select request type (for another type of request just change "MVV – visa for long stay (>90 days)" to name of another request type)
         await driver.findElement(By.xpath('//select[@id="plhMain_cboVisaCategory"]/option[contains(text(), "MVV – visa for long stay (>90 days)")]')).click();
         await driver.findElement(By.xpath('//input[@name="ctl00$plhMain$btnSubmit"]')).click(); // click on the continue button
         await driver.wait(until.elementLocated(By.xpath('//table[@id="Maintable"]')), 20000);
     });
 
     it('enter Applicant Details', async function() {
-        // select gender
+        // select gender (if you are a girl or woman just change MR. to MS. or MRS. in the below line)
         await driver.findElement(By.xpath('//select[@id="plhMain_repAppVisaDetails_cboTitle_0"]/option[contains(text(), "MR.")]')).click();
         await driver.findElement(By.xpath('//input[@id="plhMain_repAppVisaDetails_tbxFName_0"]')).sendKeys('ALI'); //first name
         await driver.findElement(By.xpath('//input[@id="plhMain_repAppVisaDetails_tbxLName_0"]')).sendKeys('ABAZARU'); //family name
@@ -43,6 +43,7 @@ describe("make an appointment", function () {
 
     it('select date from date picker', async function() {
         let month = await driver.wait(until.elementLocated(By.xpath('(//td[contains(text(), "2022")])[2]')), 20000).getText();
+        // In the line below, you can enter the desired date 
         if(month=='June 2022' || month=='July 2022' || month=='August 2022') {
             const days = await driver.wait(until.elementsLocated(By.xpath('//td[@class="OpenDateAllocated"]')), 10000);
             if (typeof(days) != 'object')
